@@ -15,40 +15,41 @@
    <children>
       <AnchorPane layoutY="49.0" prefHeight="352.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TextField fx:id="studentNameField" layoutX="215.0" layoutY="89.0" prefHeight="26.0" prefWidth="162.0" promptText="ФИО матери" />
-            <TextField fx:id="address" layoutX="215.0" layoutY="121.0" prefHeight="26.0" prefWidth="162.0" promptText="Адрес" />
-            <TextField fx:id="phone" layoutX="215.0" layoutY="153.0" prefHeight="26.0" prefWidth="162.0" promptText="Телефон" />
-            <TextField fx:id="birthplace" layoutX="215.0" layoutY="187.0" prefHeight="26.0" prefWidth="162.0" promptText="Место работы" />
+            <TextField fx:id="motherNameField" layoutX="215.0" layoutY="89.0" prefHeight="26.0" prefWidth="162.0" promptText="ФИО матери" />
+            <TextField fx:id="motherAddressField" layoutX="215.0" layoutY="121.0" prefHeight="26.0" prefWidth="162.0" promptText="Адрес" />
+            <TextField fx:id="motherPhoneField" layoutX="215.0" layoutY="153.0" prefHeight="26.0" prefWidth="162.0" promptText="Телефон" />
+            <TextField fx:id="motherWorkPlace" layoutX="215.0" layoutY="187.0" prefHeight="26.0" prefWidth="162.0" promptText="Место работы" />
             <ComboBox fx:id="familyStatus" layoutX="238.0" layoutY="244.0" prefHeight="26.0" prefWidth="121.0" promptText="Статус семьи" />
-            <Button layoutX="265.0" layoutY="312.0" mnemonicParsing="false" text="Добавить" />
+            <Button fx:id="addBtn" layoutX="265.0" layoutY="312.0" mnemonicParsing="false" text="Добавить" />
             <Label layoutX="113.0" layoutY="39.0" text="Добавление информации о родителях" textFill="#737373">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <TextField fx:id="studentNameField1" layoutX="409.0" layoutY="88.0" prefHeight="26.0" prefWidth="162.0" promptText="ФИО отца" />
-            <TextField fx:id="address1" layoutX="409.0" layoutY="120.0" prefHeight="26.0" prefWidth="162.0" promptText="Адрес" />
-            <TextField fx:id="phone1" layoutX="409.0" layoutY="152.0" prefHeight="26.0" prefWidth="162.0" promptText="Телефон" />
-            <TextField fx:id="birthplace1" layoutX="409.0" layoutY="186.0" prefHeight="26.0" prefWidth="162.0" promptText="Место работы" />
-            <TextField layoutX="30.0" layoutY="89.0" promptText="ФИО студента" />
-            <TextField layoutX="30.0" layoutY="122.0" promptText="Детей в семье" />
-            <TableView layoutX="7.0" layoutY="157.0" prefHeight="156.0" prefWidth="200.0" />
+            <TextField fx:id="fatherNameField" layoutX="409.0" layoutY="88.0" prefHeight="26.0" prefWidth="162.0" promptText="ФИО отца" />
+            <TextField fx:id="fatherAddressField" layoutX="409.0" layoutY="120.0" prefHeight="26.0" prefWidth="162.0" promptText="Адрес" />
+            <TextField fx:id="fatherPhoneField" layoutX="409.0" layoutY="152.0" prefHeight="26.0" prefWidth="162.0" promptText="Телефон" />
+            <TextField fx:id="fatherWorkPlace" layoutX="409.0" layoutY="186.0" prefHeight="26.0" prefWidth="162.0" promptText="Место работы" />
+            <TextField fx:id="studentName" layoutX="30.0" layoutY="89.0" promptText="ФИО студента" />
+            <TextField fx:id="childAmountField" layoutX="30.0" layoutY="122.0" promptText="Детей в семье" />
+            <TableView fx:id="tableView" layoutX="7.0" layoutY="157.0" prefHeight="156.0" prefWidth="200.0" />
             <MenuBar>
                <menus>
-                  <Menu fx:id="addItem" mnemonicParsing="false" text="Добавить">
+                  <Menu mnemonicParsing="false" text="Добавить">
                      <items>
                         <MenuItem fx:id="addStudent" mnemonicParsing="false" text="Студента" />
                         <MenuItem fx:id="addParentInfo" mnemonicParsing="false" text="Информацию о родителе" />
                      </items>
                   </Menu>
-                  <Menu fx:id="changeItem" mnemonicParsing="false" text="Изменить">
+                  <Menu mnemonicParsing="false" text="Изменить">
                      <items>
                         <MenuItem fx:id="ChangeItem" mnemonicParsing="false" text="Добавить" />
                      </items>
                   </Menu>
-                  <Menu fx:id="searchItem" mnemonicParsing="false" text="Найти" />
+                  <Menu mnemonicParsing="false" text="Найти" />
                </menus>
             </MenuBar>
+            <Button fx:id="searchBtn" layoutX="152.0" layoutY="89.0" mnemonicParsing="false" text="🔍" />
          </children>
       </AnchorPane>
       <Label layoutX="211.0" layoutY="10.0" text="Приемная комиссия" textFill="WHITE">

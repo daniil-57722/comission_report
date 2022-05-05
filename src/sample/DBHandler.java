@@ -61,9 +61,37 @@ public class DBHandler{
             throwables.printStackTrace();
         }
     }
-    public void add_parentInfo(){
-
-
+    public void add_parentInfo(int childs, String motherName, String motherAddress, String motherPhone,
+                               String motherWork, String fatherName, String fatherAddress, String fatherPhone,
+                               String fatherWork, String status, int idStudent){
+        String request = "INSERT INTO parents_info(id_entrant,fullfamily_status,children_amount,mother_fullname," +
+                "mother_address,mother_phone,mother_work,father_fullname,father_address,father_phone,father_work)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(request);
+            preparedStatement.setInt(1, idStudent);
+            preparedStatement.setString(2, status);
+            preparedStatement.setInt(3, childs);
+            preparedStatement.setString(4, motherName);
+            preparedStatement.setString(5, motherAddress);
+            preparedStatement.setString(6, motherPhone);
+            preparedStatement.setString(7, motherWork);
+            preparedStatement.setString(8, fatherName);
+            preparedStatement.setString(9, fatherAddress);
+            preparedStatement.setString(10, fatherPhone);
+            preparedStatement.setString(11, fatherWork);
+            preparedStatement.executeUpdate();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
+    public ResultSet querry(String querry) {
+        try{
+        Statement statement = getDbConnection().createStatement();
+        resultSet = statement.executeQuery(querry);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return resultSet;
+    }
 }
