@@ -94,4 +94,12 @@ public class DBHandler{
         }
         return resultSet;
     }
+    public void delete(String querry) {
+        try{
+            Statement statement = getDbConnection().createStatement();
+            int resultSet = statement.executeUpdate(querry);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

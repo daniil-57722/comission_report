@@ -14,63 +14,21 @@ import sample.Main;
 import java.io.IOException;
 
 public class Controller {
-
-    @FXML
-    private Menu addItem;
-
-    @FXML
-    private MenuItem addParentInfo;
-
-    @FXML
-    private MenuItem addStudent;
-
-    @FXML
-    private TextField addressField;
-
-    @FXML
-    private DatePicker birthdateField;
-
-    @FXML
-    private TextField birthplace;
-
-    @FXML
-    private TextField certificateMark;
-
-    @FXML
-    private Menu changeItem;
-
-    @FXML
-    private ComboBox<String> educationLvl;
-
-    @FXML
-    private DatePicker issueDate;
-
-    @FXML
-    private TextField issuer;
-
-    @FXML
-    private TextField phoneField;
-
-    @FXML
-    private TextField passportData;
-
-    @FXML
-    private ComboBox<String> profession;
-
-    @FXML
-    private Menu searchItem;
-
-    @FXML
-    private TextField studentNameField;
-
-    @FXML
-    private Button addBtn;
-
-    @FXML
-    private TextField birthcertificate;
-
-    @FXML
-    private TextField certificate_id;
+    @FXML private MenuItem addParentInfo;
+    @FXML private TextField addressField;
+    @FXML private DatePicker birthdateField;
+    @FXML private TextField birthplace;
+    @FXML private TextField certificateMark;
+    @FXML private ComboBox<String> educationLvl;
+    @FXML private DatePicker issueDate;
+    @FXML private TextField issuer;
+    @FXML private TextField phoneField;
+    @FXML private TextField passportData;
+    @FXML private ComboBox<String> profession;
+    @FXML private TextField studentNameField;
+    @FXML private Button addBtn;
+    @FXML private TextField birthcertificate;
+    @FXML private TextField certificate_id;
     ObservableList <String> data = FXCollections.observableArrayList();
     @FXML
     public void initialize(){
@@ -93,7 +51,7 @@ public class Controller {
             String birthDateV = birthdateField.getValue().toString();
             String fullAddressV = addressField.getText();
             String phoneV = phoneField.getText().trim();
-            String birthPlaceV = birthdateField.getValue().toString();
+            String birthPlaceV = birthplace.getText().trim();
             String[] passDataV = passportData.getText().split(" ");
             String issuedateV = issueDate.getValue().toString();
             String issuerV = issuer.getText();
