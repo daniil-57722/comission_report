@@ -13,7 +13,9 @@ import sample.DBHandler;
 import sample.Main;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ParentInfoController {
 
@@ -34,6 +36,8 @@ public class ParentInfoController {
     @FXML private TextField studentName;
     @FXML private TableView<ObservableList> tableView;
     @FXML private Button searchBtn;
+    @FXML private Button applyBtn;
+    int id;
 
     @FXML
     private void initialize(){
@@ -82,19 +86,61 @@ public class ParentInfoController {
             }
         });
         addBtn.setOnAction(event ->{
-            int childs = Integer.parseInt(childAmountField.getText().trim());
-            String motherName = motherNameField.getText().trim();
-            String motherAddress = motherAddressField.getText().trim();
-            String motherPhone = motherPhoneField.getText().trim();
-            String motherWork = motherWorkPlace.getText().trim();
-            String fatherName = fatherNameField.getText().trim();
-            String fatherAddress = fatherAddressField.getText().trim();
-            String fatherPhone = fatherPhoneField.getText().trim();
-            String fatherWork = fatherWorkPlace.getText().trim();
-            String status = familyStatus.getValue();
-            int idStudent = Integer.parseInt(String.valueOf(tableView.getSelectionModel().getSelectedItem().get(0)));
+            String idStudent = String.valueOf(tableView.getSelectionModel().getSelectedItem().get(0));
+            String[] parentInfo = collect();
             DBHandler dbHandler = new DBHandler();
-            dbHandler.add_parentInfo(childs, motherName, motherAddress, motherPhone, motherWork, fatherName, fatherAddress, fatherPhone, fatherWork, status, idStudent);
+            dbHandler.add_parentInfo(parentInfo[0], parentInfo[1], parentInfo[2], parentInfo[3], parentInfo[4],
+                    parentInfo[5], parentInfo[6], parentInfo[7], parentInfo[8], parentInfo[9], idStudent);
         });
+        applyBtn.setOnAction(event->{
+            String[] parentInfo = collect();
+            DBHandler dbHandler = new DBHandler();
+            dbHandler.updateParentInfo(parentInfo[0], parentInfo[1], parentInfo[2], parentInfo[3], parentInfo[4],
+                    parentInfo[5], parentInfo[6], parentInfo[7], parentInfo[8], parentInfo[9], id);
+        });
+    }
+
+
+    public void initData(int i) {
+        applyBtn.setVisible(true);
+        id = i;
+        DBHandler dbHandler = new DBHandler();
+        ResultSet res = dbHandler.querry("SELECT * FROM comission.parents_info WHERE id_entrant = "+id);
+        try {
+            res.next();
+            familyStatus.setValue(res.getString(2));
+            childAmountField.setText(res.getString(3));
+            motherNameField.setText(res.getString(4));
+            motherAddressField.setText(res.getString(5));
+            motherPhoneField.setText(res.getString(6));
+            motherWorkPlace.setText(res.getString(7));
+            fatherNameField.setText(res.getString(8));
+            fatherAddressField.setText(res.getString(9));
+            fatherPhoneField.setText(res.getString(10));
+            fatherWorkPlace.setText(res.getString(11));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        res = dbHandler.querry("SELECT * FROM entrant_info WHERE id_entrant = '"+id+"'");
+        try{
+            res.next();
+            studentName.setText(res.getString("fullname"));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public String[] collect(){
+        ArrayList<String> data = new ArrayList<>();
+        data.add(childAmountField.getText().trim());
+        data.add(motherNameField.getText().trim());
+        data.add(motherAddressField.getText().trim());
+        data.add(motherPhoneField.getText().trim());
+        data.add(motherWorkPlace.getText().trim());
+        data.add(fatherNameField.getText().trim());
+        data.add(fatherAddressField.getText().trim());
+        data.add(fatherPhoneField.getText().trim());
+        data.add(fatherWorkPlace.getText().trim());
+        data.add(familyStatus.getValue());
+        return data.toArray(new String[data.size()]);
     }
 }

@@ -50,6 +50,7 @@
                </menus>
             </MenuBar>
             <Button fx:id="searchBtn" layoutX="152.0" layoutY="89.0" mnemonicParsing="false" text="🔍" />
+            <Button fx:id="applyBtn" layoutX="265.0" layoutY="312.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" text="Принять" visible="false" />
          </children>
       </AnchorPane>
       <Label layoutX="211.0" layoutY="10.0" text="Приемная комиссия" textFill="WHITE">

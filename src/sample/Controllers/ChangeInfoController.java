@@ -92,29 +92,48 @@ public class ChangeInfoController {
         });
         entrantTable.setOnMouseClicked(event->{
             if(event.getClickCount() == 2){
-                ObservableList selected = entrantTable.getSelectionModel().getSelectedItem();
-//                FXMLLoader loader = new FXMLLoader(Main.class.getResource("views/area.fxml"));
-//                Stage stage = new Stage();
-//                stage.setResizable(false);
-//                stage.getIcons().add(new Image("sample/res/icon.png"));
-//                stage.setScene(new Scene(loader.load()));
-//                AreaController areaController = loader.getController();
-//                areaController.initData(user);
-//                stage.show();
+                ObservableList<String> selected = entrantTable.getSelectionModel().getSelectedItem();
+                changeEntrantInfo(selected);
             }
         });
         parentsTable.setOnMouseClicked(event->{
             if(event.getClickCount()==2){
-                ObservableList selected = entrantTable.getSelectionModel().getSelectedItem();
+            try {
+                ObservableList<String> selected = parentsTable.getSelectionModel().getSelectedItem();
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("parentInfo.fxml"));
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.setScene(new Scene(loader.load()));
+                ParentInfoController controller = loader.getController();
+                controller.initData(Integer.parseInt(selected.get(0)));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             }
         });
         eduTable.setOnMouseClicked(event->{
             if(event.getClickCount()==2){
-                ObservableList selected = entrantTable.getSelectionModel().getSelectedItem();
+                ObservableList<String> selected = entrantTable.getSelectionModel().getSelectedItem();
+                changeEntrantInfo(selected);
             }
         });
         personalTable.setOnMouseClicked(event->{
-            ObservableList selected = entrantTable.getSelectionModel().getSelectedItem();
+            ObservableList<String> selected = entrantTable.getSelectionModel().getSelectedItem();
+            changeEntrantInfo(selected);
         });
+    }
+    public void changeEntrantInfo(ObservableList<String> selected){
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("sample.fxml"));
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(new Scene(loader.load()));
+            Controller controller = loader.getController();
+            controller.initData(Integer.parseInt(selected.get(0)));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
